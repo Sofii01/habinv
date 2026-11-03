@@ -13,6 +13,8 @@ yarn-error.log
 
 # Variables de entorno locales (en Railway se configuran en el dashboard, no acá)
 .env
+/src/environments/environment.ts
+/src/environments/environment.development.ts
 
 # IDEs and editors
 .idea/
