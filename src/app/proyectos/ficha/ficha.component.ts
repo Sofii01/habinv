@@ -146,7 +146,6 @@ import { FooterComponent } from '../../footer/footer.component';
 export class FichaComponent implements OnChanges {
   @Input() slug = '';
   proyecto: Proyecto | undefined;
-  /** Fotos del carrusel: arranca en la segunda (la primera ya está en el encabezado) y la deja al final. */
   carrusel: string[] = [];
 
   detalles = detalles;

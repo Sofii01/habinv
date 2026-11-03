@@ -1,12 +1,9 @@
 export interface PaisTelefono {
-  codigo: string; // código de llamada sin el '+', ej "54"
+  codigo: string;
   pais: string;
 }
 
-// Códigos de llamada internacional (E.164) más comunes, de mayor a menor longitud
-// para poder matchear por prefijo más largo primero.
 export const PAISES_TELEFONO: PaisTelefono[] = [
-  // Américas
   { codigo: '1', pais: 'Estados Unidos' },
   { codigo: '54', pais: 'Argentina' },
   { codigo: '55', pais: 'Brasil' },
@@ -33,7 +30,6 @@ export const PAISES_TELEFONO: PaisTelefono[] = [
   { codigo: '598', pais: 'Uruguay' },
   { codigo: '1809', pais: 'República Dominicana' },
 
-  // Europa
   { codigo: '34', pais: 'España' },
   { codigo: '33', pais: 'Francia' },
   { codigo: '39', pais: 'Italia' },
@@ -80,7 +76,6 @@ export const PAISES_TELEFONO: PaisTelefono[] = [
   { codigo: '376', pais: 'Andorra' },
   { codigo: '423', pais: 'Liechtenstein' },
 
-  // Asia
   { codigo: '86', pais: 'China' },
   { codigo: '91', pais: 'India' },
   { codigo: '81', pais: 'Japón' },
@@ -124,13 +119,11 @@ export const PAISES_TELEFONO: PaisTelefono[] = [
   { codigo: '975', pais: 'Bután' },
   { codigo: '960', pais: 'Maldivas' },
 
-  // Oceanía
   { codigo: '61', pais: 'Australia' },
   { codigo: '64', pais: 'Nueva Zelanda' },
   { codigo: '679', pais: 'Fiyi' },
   { codigo: '675', pais: 'Papúa Nueva Guinea' },
 
-  // África
   { codigo: '27', pais: 'Sudáfrica' },
   { codigo: '20', pais: 'Egipto' },
   { codigo: '234', pais: 'Nigeria' },
@@ -153,16 +146,10 @@ export const PAISES_TELEFONO: PaisTelefono[] = [
   { codigo: '237', pais: 'Camerún' },
 ].sort((a, b) => b.codigo.length - a.codigo.length);
 
-/** Lista de países únicos, ordenada alfabéticamente, para poblar un <select>. */
 export const PAISES = Array.from(new Set(PAISES_TELEFONO.map(p => p.pais))).sort((a, b) =>
   a.localeCompare(b, 'es')
 );
 
-/**
- * Deduce el país a partir de un teléfono en formato internacional (con '+').
- * Prueba los códigos de llamada de mayor a menor longitud para resolver
- * ambigüedades (ej. "+54" Argentina antes que un posible "+5").
- */
 export function paisPorTelefono(telefono: string): string | null {
   const limpio = telefono.trim();
   if (!limpio.startsWith('+')) return null;

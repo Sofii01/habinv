@@ -38,7 +38,6 @@ import { filter, map } from 'rxjs';
       border-radius: 100px; backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
       transition: background .25s ease, border-color .25s ease, box-shadow .25s ease;
     }
-    /* Sobre las secciones claras el cristal translúcido no contrasta: se opaca en verde. */
     .compacto .navbar, .solido .navbar {
       background: rgba(10, 25, 25, .9); border-color: rgba(250, 250, 247, .16);
       box-shadow: 0 12px 32px rgba(0, 0, 0, .3);
@@ -55,10 +54,8 @@ import { filter, map } from 'rxjs';
   `,
 })
 export class NavbarComponent {
-  /** true en cuanto el usuario baja del borde: el navbar se acerca al tope y se opaca. */
   readonly compacto = signal(false);
 
-  /** Fuera del inicio (fichas con fondo claro arriba) el navbar va siempre opaco. */
   private readonly router = inject(Router);
   readonly enInicio = toSignal(
     this.router.events.pipe(filter(e => e instanceof NavigationEnd), map(() => this.router.url.split(/[?#]/)[0] === '/')),

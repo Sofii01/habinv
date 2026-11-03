@@ -1,18 +1,18 @@
 export interface Proyecto {
-  slug: string;           // usado en la URL /proyecto/{slug}
+  slug: string;
   nombre: string;
   ciudad: string;
   pais: string;
   descripcion: string;
-  potencial: string;     // texto de "Ubicación y potencial estratégico" en la ficha
-  img: string;            // foto de portada (cards, destacado)
-  galeria: string[];       // fotos para la ficha: [0] encabezado, [1..] carrusel
-  fotoDetalle?: string;    // foto junto a los datos en la ficha (por defecto: img)
-  fotoContacto?: string;   // fondo del formulario en la ficha (por defecto: galeria[3])
+  potencial: string;
+  img: string;
+  galeria: string[];
+  fotoDetalle?: string;
+  fotoContacto?: string;
   tipo: string;
   desde: string;
-  tasa: number;          // % anual
-  meses: number;         // plazo en meses
+  tasa: number;
+  meses: number;
   financiacion: string;
 }
 

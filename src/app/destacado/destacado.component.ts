@@ -93,7 +93,7 @@ import { PROYECTOS, detalles, ubicacion } from '../proyectos/proyectos.data';
 })
 export class DestacadoComponent {
   proyectos = PROYECTOS;
-  idx = signal(1); // Nova Comfort
+  idx = signal(1);
   actual = computed(() => this.proyectos[this.idx()]);
 
   detalles = detalles;

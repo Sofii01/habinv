@@ -25,7 +25,6 @@ import { ModalComponent } from '../shared/modal/modal.component';
             <div class="campo">
               <label for="contacto-telefono">Teléfono</label>
               <div class="telefono">
-                <!-- El <select> nativo queda invisible encima: se ve el prefijo corto y se elige el país en la lista. -->
                 <span class="prefijo">
                   <span aria-hidden="true">+{{ codigo }}</span>
                   <svg class="chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
@@ -148,7 +147,6 @@ import { ModalComponent } from '../shared/modal/modal.component';
 export class ContactoComponent {
   @Input() id = 'contacto';
 
-  /** En la ficha: preselecciona el proyecto y usa una de sus fotos de fondo. */
   @Input() set proyecto(p: Proyecto | undefined) {
     if (!p) return;
     this.proyectoNombre = p.nombre;
@@ -173,7 +171,6 @@ export class ContactoComponent {
       return;
     }
 
-    // Mismas claves que antes para no romper la hoja: el país sale del código elegido.
     const { nombre, telefono, email, proyecto } = f.value;
     const datos = {
       nombre,
@@ -193,8 +190,6 @@ export class ContactoComponent {
     this.error.set(false);
 
     try {
-      // Content-Type 'text/plain' evita el preflight CORS de Google Apps Script;
-      // el Web App debe leer el body como JSON desde e.postData.contents.
       await fetch(environment.googleSheetsEndpoint, {
         method: 'POST',
         headers: { 'Content-Type': 'text/plain;charset=utf-8' },

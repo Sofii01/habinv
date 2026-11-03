@@ -1,5 +1,3 @@
-// Lee .env (si existe, para desarrollo local) y genera los environment.ts de Angular.
-// En Railway no hace falta .env: las variables ya están en process.env al correr el build.
 const fs = require('fs');
 const path = require('path');
 
@@ -21,8 +19,7 @@ cargarDotenv(path.resolve(__dirname, '..', '.env'));
 
 const googleSheetsEndpoint = process.env.GOOGLE_SHEETS_ENDPOINT || '';
 
-const generar = (production) => `// Archivo generado automáticamente por scripts/generate-env.js a partir de .env — no editar a mano.
-export const environment = {
+const generar = (production) => `export const environment = {
   production: ${production},
   googleSheetsEndpoint: '${googleSheetsEndpoint}',
 };

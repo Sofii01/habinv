@@ -88,7 +88,6 @@ import { PROYECTOS, detalles, ubicacion } from './proyectos.data';
 })
 export class ProyectosComponent {
   @Input() id = 'proyectos';
-  /** Slug a omitir de la lista (en la ficha, el proyecto que ya se está viendo). */
   @Input() excluir = '';
 
   get proyectos() { return PROYECTOS.filter(p => p.slug !== this.excluir); }

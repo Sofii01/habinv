@@ -171,11 +171,10 @@ export class SimuladorComponent {
   proyectos = PROYECTOS;
   plazo = plazo;
 
-  /** En la ficha de un proyecto el simulador queda fijo en ese proyecto y no muestra el selector. */
   @Input() set proyecto(p: Proyecto | undefined) { this.fijo.set(p); }
   fijo = signal<Proyecto | undefined>(undefined);
 
-  idx = signal(1); // Nova Comfort
+  idx = signal(1);
   monto = signal(500);
   actual = computed(() => this.fijo() ?? this.proyectos[this.idx()]);
   ganancia = computed(() => this.monto() * (this.actual().tasa / 100) * (this.actual().meses / 12));
