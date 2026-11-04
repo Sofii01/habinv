@@ -26,6 +26,7 @@ const generar = (production) => `export const environment = {
 `;
 
 const dir = path.resolve(__dirname, '..', 'src', 'environments');
+fs.mkdirSync(dir, { recursive: true });
 fs.writeFileSync(path.join(dir, 'environment.ts'), generar(true));
 fs.writeFileSync(path.join(dir, 'environment.development.ts'), generar(false));
 

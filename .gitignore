@@ -47,7 +47,3 @@ __screenshots__/
 # System files
 .DS_Store
 Thumbs.db
-
-# Generados por scripts/generate-env.js (contienen el endpoint real)
-/src/environments/environment.ts
-/src/environments/environment.development.ts
